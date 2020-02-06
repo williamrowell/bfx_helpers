@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Identify low-complexity regions in a fasta file.
 
 Outputs a bed file with annotated homopolymers and dinucleotide streches.
@@ -38,7 +38,7 @@ if args.minhrun:
     if PATTERN:  PATTERN += '|'
     PATTERN = ('|').join(["(%s){%s,}" % (x, args.minhrun)
                           for x in BASES])
-print PATTERN
+print(PATTERN)
 
 
 def find_repeats(seq_record, pattern=PATTERN):

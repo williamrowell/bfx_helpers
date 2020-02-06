@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """Convert 1KGP VCF to BED of het var intervals
 """

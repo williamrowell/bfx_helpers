@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """For a mosdepth bed file provided to stdin, determine the mean and stddev as
 if the data were normal, and report these values.

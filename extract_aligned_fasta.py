@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """Extract subsequences mapped to contig:start-stop.
 Given an aligned bam and coordinates, return the reference-oriented

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Mark duplicate reads in input BAM and write to output BAM
 example usage:
 python markdup_stream.py --inbam consensusalignments.bam \

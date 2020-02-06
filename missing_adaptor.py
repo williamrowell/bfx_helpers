@@ -1,4 +1,4 @@
-#!/usr/local/env python
+#!/usr/local/env python3
 """Calculate alignment of sequences flanking adaptor and plot distribution.
 
 CCS reads from SMRTbell templates missing one adaptor should result in 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Identify all RE sites in reference.
 
 Find all RE sites for ENZYME within REFERENCE and output in bed format.

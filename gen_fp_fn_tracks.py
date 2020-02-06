@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Split hap.py annotated vcf into variant types and false call types.
 """
 

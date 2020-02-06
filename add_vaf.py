@@ -17,4 +17,3 @@ for record in reader:
             record.calls[0].data['DP']
     record.add_format('VAF', round(vaf, 2))
     writer.write_record(record)
-
