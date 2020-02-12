@@ -1,21 +1,21 @@
 #!/usr/local/env python3
 """Calculate alignment of sequences flanking adaptor and plot distribution.
 
-CCS reads from SMRTbell templates missing one adaptor should result in 
+CCS reads from SMRTbell templates missing one adaptor should result in
 palindromic reads.  This script attempts to identify these reads by
 aligning bases that flank the adaptor.  The outputs are a histogram of
 normalized alignment score (so you can pick a threshold that fits your
 data) and a table with alignment scores and other useful per-read stats,
 so that you can easily create whitelists.
 
-My early attempts at aligning the full CCS read to its reverse complement 
-1) resulted in distributions that were difficult to explain and 2) took 
-too long for large datasets.  Comparing the first and last N bases in the 
-CCS read solved both of those problems.  The tradeoff is that this method 
+My early attempts at aligning the full CCS read to its reverse complement
+1) resulted in distributions that were difficult to explain and 2) took
+too long for large datasets.  Comparing the first and last N bases in the
+CCS read solved both of those problems.  The tradeoff is that this method
 might be less robust to biological repeats.  One can always change the
 number of flanking bases used if desired.
 
-The constants at the top are empirically chosen for bimodal separation 
+The constants at the top are empirically chosen for bimodal separation
 after testing on a couple datasets. YMMV.
 """
 
@@ -27,7 +27,6 @@ from collections import defaultdict
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-plt.style.use('fivethirtyeight')
 import numpy as np
 import pandas as pd
 
@@ -78,7 +77,7 @@ def main(arguments):
     fig.set_size_inches(8, 6)
     axarr[0].set_title(args.fasta)
     bins = np.linspace(df.percent.min(), df.percent.max(), 50)
-    
+
     if args.nohist:
         # plot alignment distribution
         df.percent.hist(ax=axarr[0], bins=bins, log=True)
