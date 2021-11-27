@@ -1,11 +1,12 @@
 # bfx_helpers
+
 A junk drawer of one-off scripts that don't deserve their own repo yet.
 
 ## repeat_bed.py
 
 Identify low-complexity sequence in a fasta file and output a bed file with annotated homopolymers and dinucleotide repeats.
 
-```
+```text
 usage: repeat_bed.py [-h] [--minhrun MINHRUN] [--minrepeats MINREPEATS]
                      [--threads {1,2,3,4,5,6,7}]
                      reference
@@ -29,7 +30,7 @@ optional arguments:
 
 Add tag `mq` to reads in BAM, with a binned representation of the MAPQ (MAPQ/10).
 
-```
+```text
 usage: samtools view my.bam | python3 add_mq_tag.py > my.mq.bam
 ```
 
@@ -37,7 +38,7 @@ usage: samtools view my.bam | python3 add_mq_tag.py > my.mq.bam
 
 Add FORMAT field for variant allele fraction to pbsv VCF.
 
-```
+```text
 usage: cat pbsv.vcf | python3 add_vaf.py > pbsv.vaf.vcf
 ```
 
@@ -46,13 +47,13 @@ usage: cat pbsv.vcf | python3 add_vaf.py > pbsv.vaf.vcf
 For a mosdepth bed file provided to stdin, determine the mean and stddev as
 if the data were normally distributed, and report these values.
 
-```
+```text
 usage:  tabix ${BAM%.*}.median.regions.bed.gz <list of autosomes> | python depth_mean_stddev.py
 ```
 
 ## extract_aligned_fasta.py
 
-```
+```text
 usage: extract_aligned_fasta.py [-h] inbam outfasta contig start stop
 
 Extract subsequences mapped to contig:start-stop.
@@ -72,7 +73,7 @@ optional arguments:
 
 ## extract_aligned_fastq.py
 
-```
+```text
 usage: extract_aligned_fastq.py [-h] inbam outfastq contig start stop
 
 Extract subsequences mapped to contig:start-stop.
@@ -92,7 +93,7 @@ optional arguments:
 
 ## gen_fp_fn_tracks.py
 
-```
+```text
 usage: gen_fp_fn_tracks.py [-h] invcf
 
 Split hap.py annotated vcf into variant types and false call types.
@@ -108,7 +109,7 @@ optional arguments:
 
 Mark duplicate reads in input BAM and write to output BAM. Reference based.
 
-```
+```text
 usage:
 python markdup_stream.py --inbam consensusalignments.bam \
                          --outbam markdup.consensusalignments.bam \
@@ -120,7 +121,7 @@ python markdup_stream.py --inbam consensusalignments.bam \
 
 Mark duplicate reads in input BAM and write to output BAM
 
-```
+```text
 usage:
 python markdup_stream.py --inbam consensusalignments.bam \
                          --outbam markdup.consensusalignments.bam \
@@ -144,7 +145,7 @@ be less robust to biological repeats. One can always change the number of
 flanking bases used if desired. The constants at the top are empirically
 chosen for bimodal separation after testing on a couple datasets. YMMV.
 
-```
+```text
 usage: missing_adaptor.py [-h] [--nohist] fasta
 ```
 
@@ -152,7 +153,7 @@ usage: missing_adaptor.py [-h] [--nohist] fasta
 
 Given a vcf, create a bed of intervals between consecutive heterozygous variants.
 
-```
+```text
 usage: vcfhet2bed.py [-h] vcf chromosome
 
 Convert 1KGP VCF to BED of het var intervals
@@ -168,4 +169,3 @@ optional arguments:
 ## hp_compress.py & zCurve.py
 
 Helper functions for compressing homopolymers and calculating a DNA zCurve.
-

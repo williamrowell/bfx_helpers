@@ -1,7 +1,6 @@
-Manipulate the per-base quality in fastq files to test the effect of bq
-on a downstream process like variant calling.
+# Manipulate the per-base quality in fastq files to test the effect of bq on a downstream process like variant calling
 
-```bash
+```text
 $ rand_fq_qual.py --help
 usage: rand_fq_qual.py [-h] [-s SEED] [-f FIXED_SCORE] [-o OUTFILE] fastq
 
@@ -25,11 +24,13 @@ optional arguments:
 ```
 
 Shuffle per-base quality score.
+
 ```bash
 rand_fq_qual.py -o shuffle.reads.fastq reads.fastq
 ```
 
 Shuffle per-base quality score and align reads.
+
 ```bash
 rand_fq_qual.py --seed 23 reads.fastq | \
   minimap2 -t 24 -ax map-pb \
@@ -40,6 +41,7 @@ rand_fq_qual.py --seed 23 reads.fastq | \
 ```
 
 Change all per-base quality scores to fixed value and align reads.
+
 ```bash
 rand_fq_qual.py --fixed 20 reads.fastq | \
   minimap2 -t 24 -ax map-pb \

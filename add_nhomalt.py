@@ -21,22 +21,28 @@ def nhomalt(record):
 
 def main():
     # read from stdin
-    reader = vcfpy.Reader.from_path('/dev/stdin')
+    reader = vcfpy.Reader.from_path("/dev/stdin")
     # add 'nhomalt' to header
     reader.header.add_info_line(
-        vcfpy.OrderedDict([('ID', 'nhomalt'),
-                           ('Number', 'A'),
-                           ('Type', 'Integer'),
-                           ('Description', 'The number of individuals that are called homozygous for the alternate allele.')])
+        vcfpy.OrderedDict(
+            [
+                ("ID", "nhomalt"),
+                ("Number", "A"),
+                ("Type", "Integer"),
+                (
+                    "Description",
+                    "The number of individuals that are called homozygous for the alternate allele.",
+                ),
+            ]
+        )
     )
     # write to stdout with modified header
-    with vcfpy.Writer.from_path('/dev/stdout', reader.header) as writer:
+    with vcfpy.Writer.from_path("/dev/stdout", reader.header) as writer:
         for record in reader:
-            record.INFO['nhomalt'] = [nhomalt(record)]
+            record.INFO["nhomalt"] = [nhomalt(record)]
             writer.write_record(record)
 
 
 if __name__ == "__main__":
-    """ This is executed when run from the command line """
+    """This is executed when run from the command line"""
     main()
-

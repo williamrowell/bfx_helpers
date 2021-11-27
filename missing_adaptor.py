@@ -25,7 +25,8 @@ import argparse
 from collections import defaultdict
 
 import matplotlib
-matplotlib.use('Agg')
+
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -33,11 +34,11 @@ import pandas as pd
 from Bio import pairwise2, SeqIO
 
 
-FLANK_LEN = 100     # number of adaptor-flanking bases to align
-MATCH = 5           # match score
-MISMATCH = -4       # mismatch penalty
-GAP_OPEN = -10      # gap open penalty
-GAP_EXTEND = -0.5   # gap extend penalty
+FLANK_LEN = 100  # number of adaptor-flanking bases to align
+MATCH = 5  # match score
+MISMATCH = -4  # mismatch penalty
+GAP_OPEN = -10  # gap open penalty
+GAP_EXTEND = -0.5  # gap extend penalty
 
 
 def calc_identity(record):
@@ -47,31 +48,30 @@ def calc_identity(record):
     """
     leftflank = record.seq[0:FLANK_LEN]
     rightflank = record.seq[-FLANK_LEN:].reverse_complement()
-    alignment = pairwise2.align.globalms(leftflank,
-                                         rightflank,
-                                         MATCH, MISMATCH, GAP_OPEN, GAP_EXTEND,
-                                         score_only=True)
+    alignment = pairwise2.align.globalms(
+        leftflank, rightflank, MATCH, MISMATCH, GAP_OPEN, GAP_EXTEND, score_only=True
+    )
     return alignment, (float(alignment) / (MATCH * FLANK_LEN)) * 100
 
 
 def main(arguments):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('fasta', help='input fasta', type=str)
-    parser.add_argument('--nohist', help='suppress histogram', action='store_false')
+    parser.add_argument("fasta", help="input fasta", type=str)
+    parser.add_argument("--nohist", help="suppress histogram", action="store_false")
     args = parser.parse_args(arguments)
 
-    outcsv = os.path.splitext(args.fasta)[0] + '_self_alignment.csv'
+    outcsv = os.path.splitext(args.fasta)[0] + "_self_alignment.csv"
 
     data = defaultdict(list)
-    for record in SeqIO.parse(args.fasta, 'fasta'):
-        data['name'].append(record.id)
-        data['zmw'].append(record.id.split('/')[1])
-        data['length'].append(len(record))
+    for record in SeqIO.parse(args.fasta, "fasta"):
+        data["name"].append(record.id)
+        data["zmw"].append(record.id.split("/")[1])
+        data["length"].append(len(record))
         score, percent = calc_identity(record)
-        data['score'].append(score)
-        data['percent'].append(percent)
+        data["score"].append(score)
+        data["percent"].append(percent)
     df = pd.DataFrame(data=data)
-    df = df[['name', 'zmw', 'length', 'score', 'percent']]
+    df = df[["name", "zmw", "length", "score", "percent"]]
 
     fig, axarr = plt.subplots(2)
     fig.set_size_inches(8, 6)
@@ -81,21 +81,20 @@ def main(arguments):
     if args.nohist:
         # plot alignment distribution
         df.percent.hist(ax=axarr[0], bins=bins, log=True)
-        axarr[0].set_ylabel('log count')
+        axarr[0].set_ylabel("log count")
 
         # plot cumulative distribution
         df.percent.hist(ax=axarr[1], bins=bins, cumulative=True, density=True)
-        axarr[1].set_ylabel('cum. freq.')
-        axarr[-1].set_xlabel('percent alignment')
+        axarr[1].set_ylabel("cum. freq.")
+        axarr[-1].set_xlabel("percent alignment")
 
         plt.tight_layout()
-        outfig = os.path.splitext(args.fasta)[0] + '_self_alignment_distribution.png'
+        outfig = os.path.splitext(args.fasta)[0] + "_self_alignment_distribution.png"
         plt.savefig(outfig)
 
     # save table
-    df.to_csv(outcsv, sep='\t', index=False)
+    df.to_csv(outcsv, sep="\t", index=False)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     sys.exit(main(sys.argv[1:]))
-

@@ -11,14 +11,13 @@ import numpy as np
 from scipy.stats import norm, mode
 
 # pull coverage depth into an array
-depth = np.loadtxt(sys.stdin, delimiter='\t', usecols=3, dtype=np.float64)
+depth = np.loadtxt(sys.stdin, delimiter="\t", usecols=3, dtype=np.float64)
 
 # calculate mode of values > 0
 nonzero_mode = mode(depth[depth > 0])[0]
 
 # calculate mu, sigma of values from 1 to 2*mode
-mean, stddev = norm.fit(depth[(depth > 0) & (depth < (2*nonzero_mode))])
+mean, stddev = norm.fit(depth[(depth > 0) & (depth < (2 * nonzero_mode))])
 
 # output mu, sigma
 print(mean, stddev)
-
