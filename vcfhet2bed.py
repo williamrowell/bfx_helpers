@@ -3,12 +3,11 @@
 """Convert 1KGP VCF to BED of het var intervals
 """
 
-import sys
-import re
 import argparse
 import csv
+import re
+import sys
 from collections import defaultdict
-
 
 GT_DELIM = re.compile(r"/|\|")
 

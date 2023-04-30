@@ -7,9 +7,8 @@ sites with genotype 1/2. There are no safeguards. It will fail, either
 silently or noisily, if given unexpected input.
 """
 
-import sys
 import argparse
-
+import sys
 
 # FORMAT fields requiring recalculation
 FORMAT_remove = ["PL"]

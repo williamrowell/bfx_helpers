@@ -5,7 +5,6 @@
 
 import pysam
 
-
 with pysam.AlignmentFile("-", "r") as infile, pysam.AlignmentFile(
     "-", "w", template=infile
 ) as outfile:

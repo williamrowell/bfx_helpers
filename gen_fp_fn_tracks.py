@@ -2,8 +2,9 @@
 """Split hap.py annotated vcf into variant types and false call types.
 """
 
-import sys
 import argparse
+import sys
+
 import vcf
 
 

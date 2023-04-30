@@ -6,11 +6,12 @@ python markdup_stream.py --inbam consensusalignments.bam \
                          --stats dedup.stats.txt \
                          --dup_list dupreads.txt
 """
+import argparse
 import os
 import sys
-import argparse
-import pysam
 from collections import deque
+
+import pysam
 
 
 def _parse_args(cmdl):

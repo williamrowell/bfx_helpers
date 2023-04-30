@@ -5,11 +5,10 @@ Find all RE sites for ENZYME within REFERENCE and output in bed format.
 """
 
 import argparse
-import sys
 import os.path
+import sys
 
-from Bio import Restriction
-from Bio import SeqIO
+from Bio import Restriction, SeqIO
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("reference", help="reference fasta", type=str)

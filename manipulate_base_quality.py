@@ -8,9 +8,9 @@ randomizing per-base quality while holding mean read quality constant.
 Alternately, set all base qualities to a fixed value.
 """
 
-import sys
 import argparse
 import random
+import sys
 
 from Bio import SeqIO
 

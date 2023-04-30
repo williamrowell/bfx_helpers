@@ -3,14 +3,13 @@
 
 Outputs a bed file with annotated homopolymers and dinucleotide streches.
 """
-import re
 import argparse
 import csv
-
+import re
 from multiprocessing import Pool, cpu_count
+
 from Bio import SeqIO
 from Bio.Alphabet import IUPAC
-
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("reference", help="path for input fasta", type=str)

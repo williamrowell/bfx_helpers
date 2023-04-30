@@ -19,16 +19,16 @@ The constants at the top are empirically chosen for bimodal separation
 after testing on a couple datasets. YMMV.
 """
 
+import argparse
 import os.path
 import sys
-import argparse
 from collections import defaultdict
+
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from Bio import pairwise2, SeqIO
-
+from Bio import SeqIO, pairwise2
 
 matplotlib.use("Agg")
 

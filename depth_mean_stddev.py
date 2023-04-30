@@ -9,8 +9,9 @@ Example:
 """
 
 import sys
+
 import numpy as np
-from scipy.stats import norm, mode
+from scipy.stats import mode, norm
 
 # pull coverage depth into an array
 depth = np.loadtxt(sys.stdin, delimiter="\t", usecols=3, dtype=np.float64)

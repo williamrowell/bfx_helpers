@@ -5,15 +5,14 @@ Given an aligned bam and coordinates, return the subsequences of alignments
 that completely overlap [start, stop].
 """
 
-import sys
 import argparse
+import sys
 
+import pysam
 from Bio import SeqIO
+from Bio.Alphabet import IUPAC
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
-from Bio.Alphabet import IUPAC
-import pysam
-
 
 direction = {True: "r", False: "f"}
 
