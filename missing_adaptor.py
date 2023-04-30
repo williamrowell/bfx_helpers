@@ -23,16 +23,14 @@ import os.path
 import sys
 import argparse
 from collections import defaultdict
-
 import matplotlib
-
-matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-
 from Bio import pairwise2, SeqIO
 
+
+matplotlib.use("Agg")
 
 FLANK_LEN = 100  # number of adaptor-flanking bases to align
 MATCH = 5  # match score

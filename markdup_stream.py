@@ -157,7 +157,8 @@ def main(arguments):
         total_set = set()  # set of query_name for all reads
 
         for curr in infile:
-            # flush output buffer of any alignments out of range of curr and write to disk
+            # flush output buffer of any alignments out of range of curr and
+            # write to disk
             write_alignments(
                 flush_buffer(curr, buffer, args.aln_wiggle), args.rmdup, outfile
             )

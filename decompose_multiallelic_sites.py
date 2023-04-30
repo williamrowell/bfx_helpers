@@ -2,11 +2,11 @@
 
 """Decompose multiallelic variant sites and statistics as biallelic sites.
 
-This expects to receive a VCF with a single sample and only multi-allelic sites with genotype 1/2.
-There are no safeguards. It will fail, either silently or noisily, if given unexpected input.
+This expects to receive a VCF with a single sample and only multi-allelic
+sites with genotype 1/2. There are no safeguards. It will fail, either
+silently or noisily, if given unexpected input.
 """
 
-import os
 import sys
 import argparse
 

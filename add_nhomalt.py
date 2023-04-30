@@ -31,7 +31,8 @@ def main():
                 ("Type", "Integer"),
                 (
                     "Description",
-                    "The number of individuals that are called homozygous for the alternate allele.",
+                    "The number of individuals that are called homozygous"
+                    "for the alternate allele.",
                 ),
             ]
         )

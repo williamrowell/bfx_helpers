@@ -5,7 +5,6 @@ Given an aligned bam and coordinates, return the reference-oriented
 subsequences of alignments that completely overlap [start, stop].
 """
 
-import os.path
 import sys
 import argparse
 

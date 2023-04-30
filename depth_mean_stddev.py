@@ -2,8 +2,10 @@
 
 """For a mosdepth bed file provided to stdin, determine the mean and stddev as
 if the data were normal, and report these values.
-Usage:  tabix ${BAM%.*}.median.regions.bed.gz <list of autosomes> | python depth_mean_stddev.py
-Example, hs37d5:  tabix ${BAM%.*}.median.regions.bed.gz {1..22} | python depth_mean_stddev.py
+Usage:
+    tabix ${BAM%.*}.median.regions.bed.gz <list autosomes> | depth_mean_stddev.py
+Example:
+    tabix ${BAM%.*}.median.regions.bed.gz {1..22} | depth_mean_stddev.py
 """
 
 import sys
